@@ -1,27 +1,5 @@
-import sheep
-import random
+from simulation import Simulation
 
-
-
-
-def generate_sheep(sheep_number,init_pos):
-    sheep_list = [] #list of sheep
-    for i in range(sheep_number):
-      sheep_list.append(sheep(random.uniform(-init_pos,init_pos),
-                              random.uniform(-init_pos,init_pos)))
-      sheep[i].no = i
-    return sheep_list
-
-
-
-
-
-
-
-if __name__ == '__main__':
-    round = 50
-    sheep = 15
-    init_pos_of_sheep = 10.0
-    sheep_distance_move = 0.5
-    wolf_distance_move = 1.0
-
+# Example usage
+simulation = Simulation(num_sheep=15, limit=10.0, sheep_movement=0.5, wolf_movement=1.0, max_rounds=50)
+simulation.run()
