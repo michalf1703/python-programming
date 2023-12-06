@@ -1,4 +1,3 @@
-import random
 import math
 import json
 import csv
@@ -17,9 +16,8 @@ class Simulation:
         self.rounds_data = []
 
     def run(self):
-        # Dodaj kod, który czyści plik alive.csv przed rozpoczęciem symulacji
         with open('alive.csv', 'w', newline='') as clean_csv_file:
-            pass  # Pozostaw pusty plik
+            pass
         for round_num in range(1, self.max_rounds + 1):
             alive_sheep = sum(sheep.is_alive for sheep in self.sheep_list)
 
@@ -49,12 +47,12 @@ class Simulation:
             else:
                 print(f"Round {round_num}: No more alive sheep. Simulation over.")
                 break
-
+            alive_sheep = sum(sheep.is_alive for sheep in self.sheep_list)
             # Save number of alive sheep to csv file
             self.save_alive_count(round_num, alive_sheep)
-
             # Display simulation status
             self.display_status(round_num, alive_sheep)
+
 
             # Save positions to json file
             self.save_positions(round_num)
