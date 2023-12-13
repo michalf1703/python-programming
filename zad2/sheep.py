@@ -1,13 +1,18 @@
 import random
 
 
+# Define the Sheep class
 class Sheep:
     def __init__(self, sequence_number, limit):
         self.sequence_number = sequence_number
-        self.position = (random.uniform(-limit, limit), random.uniform(-limit, limit))
+        # Initialize the position with random coordinates
+        self.position = (random.uniform(-limit, limit),
+                         random.uniform(-limit, limit))
+        # Set the initial status of the sheep as alive
         self.is_alive = True
 
     def move(self, distance):
+        # Randomly choose a direction
         direction = random.choice(['north', 'south', 'east', 'west'])
         if direction == 'north':
             self.position = (self.position[0], self.position[1] + distance)
