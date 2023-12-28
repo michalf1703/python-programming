@@ -16,14 +16,13 @@ class Simulation:
 
 
     def run(self):
-        # We use clear alive.csv
+        # We use to overwrite alive.csv
         with open('alive.csv', 'w', newline=''):
             pass
         for round_num in range(1, self.max_rounds + 1):
             for sheep in self.sheep_list:
                 if sheep.is_alive:
                     sheep.move(self.sheep_movement)
-
             # Find the closest sheep to the wolf
             closest_sheep = self.wolf.find_closest_sheep(
                 [sheep for sheep in self.sheep_list if sheep.is_alive])
