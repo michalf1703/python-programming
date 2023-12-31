@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for, jsonify
 from app import app, db
-from app.models import DataPoint
-from app.utils import predict_category
+from models import DataPoint
+from utils import predict_category
 
 @app.route('/')
 def index():
