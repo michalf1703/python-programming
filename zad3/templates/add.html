@@ -4,19 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <title>Add Data Point</title>
 </head>
 <body>
-    <h1>Add Data Point</h1>
-    <form method="post">
-        <label for="feature1">Feature 1:</label>
-        <input type="text" name="feature1" required>
-        <label for="feature2">Feature 2:</label>
-        <input type="text" name="feature2" required>
-        <label for="category">Category:</label>
-        <input type="text" name="category" required>
-        <button type="submit">Add Data Point</button>
-    </form>
-    <a href="{{ url_for('index') }}">Back to Data Points</a>
+    <div class="container mt-5">
+        <h1>Add Data Point</h1>
+        <form method="post">
+            <div class="form-group">
+                <label for="feature1">Feature 1:</label>
+                <input type="text" class="form-control" name="feature1" required>
+            </div>
+            <div class="form-group">
+                <label for="feature2">Feature 2:</label>
+                <input type="text" class="form-control" name="feature2" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <input type="text" class="form-control" name="category" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Data Point</button>
+        </form>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Back to Data Points</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
