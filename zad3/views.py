@@ -34,14 +34,14 @@ def train_classifier():
 def api_data():
     if request.method == 'GET':
         data_points = DataPoint.query.all()
-        data_list = [{'id': dp.id, 'feature1': dp.feature1, 'feature2': dp.feature2, 'category': dp.category} for dp in data_points]
+        data_list = [{'id': dp.id, 'feature1': dp.feature1, 'feature2': dp.feature2,'feature3': dp.feature3, 'category': dp.category} for dp in data_points]
         return jsonify(data_list)
 
     elif request.method == 'POST':
         data = request.json
 
         try:
-            new_data_point = DataPoint(feature1=data['feature1'], feature2=data['feature2'], category=data['category'])
+            new_data_point = DataPoint(feature1=data['feature1'], feature2=data['feature2'], feature3=data['feature3'], category=data['category'])
             db.session.add(new_data_point)
             db.session.commit()
 
@@ -66,8 +66,9 @@ def api_predictions():
     try:
         feature1 = float(request.args.get('feature1'))
         feature2 = float(request.args.get('feature2'))
+        feature3 = float(request.args.get('feature3'))
 
-        standardized_features = scaler.transform([[feature1, feature2]])
+        standardized_features = scaler.transform([[feature1, feature2, feature3]])
 
         prediction = classifier.predict(standardized_features)
         predicted_category = int(prediction[0])
@@ -87,9 +88,10 @@ def add():
     if request.method == 'POST':
         feature1 = float(request.form['feature1'])
         feature2 = float(request.form['feature2'])
+        feature3 = float(request.form['feature3'])
         category = int(request.form['category'])
 
-        new_data_point = DataPoint(feature1=feature1, feature2=feature2, category=category)
+        new_data_point = DataPoint(feature1=feature1, feature2=feature2, feature3=feature3,  category=category)
         db.session.add(new_data_point)
         db.session.commit()
 

@@ -14,8 +14,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Feature 1</th>
-                    <th>Feature 2</th>
+                    <th>Feature (lenght)</th>
+                    <th>Feature (width)</th>
+                    <th>Feature (weight)</th>
                     <th>Category</th>
                     <th>Action</th>
                 </tr>
@@ -26,6 +27,7 @@
                         <td>{{ data_point.id }}</td>
                         <td>{{ data_point.feature1 }}</td>
                         <td>{{ data_point.feature2 }}</td>
+                        <td>{{ data_point.feature3 }}</td>
                         <td>{{ data_point.category }}</td>
                         <td>
                             <form method="post" action="{{ url_for('delete', record_id=data_point.id) }}">

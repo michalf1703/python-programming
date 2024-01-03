@@ -1,3 +1,5 @@
+<!-- templates/add.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +14,16 @@
         <h1>Add Data Point</h1>
         <form method="post">
             <div class="form-group">
-                <label for="feature1">Feature 1:</label>
+                <label for="feature1">Feature 1 (width):</label>
                 <input type="text" class="form-control" name="feature1" required>
             </div>
             <div class="form-group">
-                <label for="feature2">Feature 2:</label>
+                <label for="feature2">Feature 2 (length):</label>
                 <input type="text" class="form-control" name="feature2" required>
+            </div>
+            <div class="form-group">
+                <label for="feature3">Feature 3 (weight):</label>
+                <input type="text" class="form-control" name="feature3" required>
             </div>
             <div class="form-group">
                 <label for="category">Category:</label>
@@ -26,7 +32,30 @@
             <button type="submit" class="btn btn-primary">Add Data Point</button>
         </form>
         <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Back to Data Points</a>
+        <table class="table table-bordered mt-5">
+            <thead>
+                <tr>
+                    <th>Category Number</th>
+                    <th>Category Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Orange</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Apple</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Watermelon</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
