@@ -29,11 +29,21 @@
         </form>
 
         {% if category %}
-            <div class="mt-3">
-                <h2>Prediction Result</h2>
-                <p>The predicted category is: {{ category }}</p>
-            </div>
+    <div class="mt-3">
+        <h2>Prediction Result</h2>
+        <p>The predicted category is: {{ category }}</p>
+        {% if category == 1 %}
+            <p>This is a Banana!</p>
+        {% elif category == 2 %}
+            <p>This is an Apple!</p>
+        {% elif category == 3 %}
+            <p>This is a Watermelon!</p>
+        {% else %}
+            <p>Unknown category</p>
         {% endif %}
+    </div>
+        {% endif %}
+
 
         <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Back to Data Points</a>
     </div>

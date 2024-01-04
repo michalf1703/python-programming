@@ -39,6 +39,8 @@
             </tbody>
         </table>
         <a href="{{ url_for('add') }}" class="btn btn-primary">Add Data Point</a>
+        <a href="{{ url_for('predict') }}" class="btn btn-success mt-3">Predict Category</a>
+
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
