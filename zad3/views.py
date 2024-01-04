@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from models import db, DataPoint
 from sklearn.neighbors import KNeighborsClassifier
@@ -6,7 +7,6 @@ from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SECRET_KEY'] = '3CqwrAzIPv'
-
 scaler = None
 classifier = None
 
@@ -14,20 +14,6 @@ db.init_app(app)
 
 with app.app_context():
     db.create_all()
-
-def train_classifier():
-    with app.app_context():
-        data_points = DataPoint.query.all()
-        X = [[dp.feature1, dp.feature2] for dp in data_points]
-        y = [dp.category for dp in data_points]
-
-        scaler = StandardScaler()
-        X_standardized = scaler.fit_transform(X)
-
-        classifier = KNeighborsClassifier(n_neighbors=3)
-        classifier.fit(X_standardized, y)
-
-        return classifier, scaler
 
 
 @app.route('/api/data', methods=['GET', 'POST'])
@@ -61,22 +47,6 @@ def api_delete_data(record_id):
     else:
         return jsonify({'error': 'Record not found'}), 404
 
-@app.route('/api/predictions', methods=['GET'])
-def api_predictions():
-    try:
-        feature1 = float(request.args.get('feature1'))
-        feature2 = float(request.args.get('feature2'))
-        feature3 = float(request.args.get('feature3'))
-
-        standardized_features = scaler.transform([[feature1, feature2, feature3]])
-
-        prediction = classifier.predict(standardized_features)
-        predicted_category = int(prediction[0])
-
-        return jsonify({'predicted_category': predicted_category}), 200
-
-    except (ValueError, TypeError):
-        return jsonify({'error': 'Invalid data'}), 400
 
 @app.route('/')
 def index():
