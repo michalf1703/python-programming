@@ -14,9 +14,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Feature (height)</th>
-                    <th>Feature (width)</th>
-                    <th>Feature (weight)</th>
+                    <th>Feature 1 (height)</th>
+                    <th>Feature 2 (width)</th>
+                    <th>Feature 3 (weight)</th>
                     <th>Category</th>
                     <th>Action</th>
                 </tr>
@@ -39,7 +39,7 @@
             </tbody>
         </table>
         <a href="{{ url_for('add') }}" class="btn btn-primary">Add Data Point</a>
-        <a href="{{ url_for('predict') }}" class="btn btn-success mt-3">Predict Category</a>
+        <a href="{{ url_for('predict') }}" class="btn btn-primary">Predict Category</a>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
